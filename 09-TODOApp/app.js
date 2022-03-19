@@ -21,7 +21,7 @@ todoList.addEventListener("click", (e) => {
 
 // render new list item
 function renderNewList() {
-  if (taskInput.value && taskInput.value.trim() !== "") {
+  if (taskInput.value.trim() !== "") {
     const newList = `
         <li class="todo-item">
           <span class="item">${taskInput.value}</span>
