@@ -1,6 +1,6 @@
 const addBtn = document.querySelector("#addBtn");
 const taskInput = document.querySelector("#taskInput");
-const ul = document.querySelector(".todo-list");
+const todoList = document.querySelector(".todo-list");
 
 // addbtn click handler
 addBtn.addEventListener("click", () => {
@@ -14,7 +14,12 @@ taskInput.addEventListener("keypress", (e) => {
   }
 });
 
-// render newList
+// ul event handler
+todoList.addEventListener("click", (e) => {
+  removeTodo(e);
+});
+
+// render new list item
 function renderNewList() {
   if (taskInput.value && taskInput.value.trim() !== "") {
     const newList = `
@@ -24,11 +29,15 @@ function renderNewList() {
         </li>
       `;
 
-    ul.insertAdjacentHTML("beforeend", newList);
-
-    const closeBtn = document.querySelector(".closeBtn");
-
+    todoList.insertAdjacentHTML("beforeend", newList);
     taskInput.value = "";
     taskInput.focus();
+  }
+}
+
+// remove todo list item
+function removeTodo(event) {
+  if (event.target.tagName === "BUTTON") {
+    event.target.parentElement.remove();
   }
 }
