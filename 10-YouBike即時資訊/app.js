@@ -6,30 +6,11 @@ const searchInput = document.querySelector("#searchKeyword");
 // pervent form default event
 document.querySelector("#searchForm").addEventListener("submit", (e) => {
   e.preventDefault();
-});
-
-// btn click handler
-document.querySelector(".btn").addEventListener("click", () => {
-  sendKeywordHandler();
-});
-
-// input keyboard handler
-searchInput.addEventListener("keyup", (e) => {
-  if (e.key === "Enter") {
-  } else if (e.key !== "Enter") {
-    e.target.style.outline = "none";
-  }
-});
-
-// input blur handler
-searchInput.addEventListener("blur", (e) => {
-  e.target.style.outline = "none";
-});
-
-// search input handler
-function sendKeywordHandler() {
   const keyword = searchInput.value;
+  sendKeywordHandler(keyword);
+});
 
+function sendKeywordHandler(keyword) {
   if (keyword.trim() === "") {
     searchInput.style.outline = "3px solid red";
     searchInput.focus();
@@ -56,16 +37,28 @@ async function getUBikeData(url, keyword) {
   }
 
   parseData.forEach((d) => {
-    let { ar, sna, sbi } = d;
+    let { ar: address, sna: stationName, sbi: bikeNumber } = d;
 
     let newList = `
         <li class="list-group-item fs-5">
             <i class="fas fa-bicycle"></i>
-            ${sna.replace("YouBike2.0_", "")} (${sbi})<br />
-            <small class="text-muted">${ar}</small>
+            ${stationName.replace("YouBike2.0_", "")} (${bikeNumber})<br />
+            <small class="text-muted">${address}</small>
         </li>
     `;
 
     siteList.insertAdjacentHTML("beforeend", newList);
   });
 }
+
+// remove input outline
+searchInput.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+  } else if (e.key !== "Enter") {
+    e.target.style.outline = "none";
+  }
+});
+
+searchInput.addEventListener("blur", (e) => {
+  e.target.style.outline = "none";
+});
