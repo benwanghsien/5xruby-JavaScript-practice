@@ -30,6 +30,7 @@ function renderNewList() {
       `;
 
     todoList.insertAdjacentHTML("beforeend", newList);
+
     taskInput.value = "";
     taskInput.focus();
   }
