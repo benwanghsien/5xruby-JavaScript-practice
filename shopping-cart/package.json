@@ -1,0 +1,17 @@
+{
+  "name": "shopping_cart",
+  "version": "2.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@parcel/transformer-sass": "^2.4.0",
+    "parcel": "^2.4.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.6.0"
+  }
+}
