@@ -1,22 +1,24 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "@fortawesome/fontawesome-free/css/all.css";
-import { updateCart, deleteWholeCart } from "./shoppingCartFunction.js";
+import {
+  checkState,
+  updateCart,
+  deleteWholeCart,
+} from "./shoppingCartFunction.js";
 
 const catListGroup = document.querySelectorAll("div.card");
-const cartState = {
-  老大: [0, 20],
-  貝貝: [0, 15],
-  老虎: [0, 10],
-  胖胖: [0, 8.5],
-  小花: [0, 9.99],
-  黑臉: [0, 12.5],
-};
+
+const cartState = {};
 
 catListGroup.forEach((ele) => {
   ele.addEventListener("click", (e) => {
     if (e.target.tagName === "BUTTON" || e.target.tagName === "I") {
       const name = e.currentTarget.children[1].children[0].innerText;
-      cartState[name][0] += 1;
+      const price = Number(
+        e.currentTarget.children[1].children[1].innerText.slice(1)
+      );
+
+      checkState(cartState, [name, price]);
 
       updateCart(name, cartState);
     }

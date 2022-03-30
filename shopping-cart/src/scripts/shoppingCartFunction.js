@@ -76,10 +76,12 @@ function updateCart(name, state) {
   updateTotalPrice();
 }
 
-export {
-  addOneItemToCart,
-  updateCart,
-  updateTotalPrice,
-  deleteOneItemFromCart,
-  deleteWholeCart,
-};
+function checkState(state, productArr) {
+  if (!state[productArr[0]]) {
+    state[productArr[0]] = [1, productArr[1]];
+  } else {
+    state[productArr[0]][0]++;
+  }
+}
+
+export { updateCart, deleteWholeCart, checkState };
