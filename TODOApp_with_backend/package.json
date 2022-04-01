@@ -1,11 +1,10 @@
 {
   "name": "TODO_APP",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "parcel src/index.html",
-    "build": "parcel build"
+    "start": "parcel src/pages/index.html",
+    "build": "parcel build src/pages/*.html"
   },
   "devDependencies": {
     "parcel": "^2.4.0",

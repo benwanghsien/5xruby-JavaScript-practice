@@ -1,4 +1,5 @@
 import axios from "axios";
+
 const API_BASE = "https://todoo.5xcamp.us/";
 
 document.querySelector("#signUp").addEventListener("submit", function (e) {
@@ -45,7 +46,7 @@ document.querySelector("#logIn").addEventListener("submit", function (e) {
     .then((res) => {
       const token = res.headers.authorization;
       localStorage.setItem("token", token);
-      window.location = "./todo-page/index.html";
+      window.location = "../pages/todo_page.html";
       document.querySelector(".check").innerText = "已登入";
     })
     .catch((e) => {
